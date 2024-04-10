@@ -7,5 +7,5 @@ add_library( webcrawler
     Url.cpp
 )
 
-target_link_libraries( webcrawler boost_url boost_system )
+target_link_libraries( webcrawler boost_url boost_system ssl crypto)
 target_include_directories( webcrawler  PUBLIC include )

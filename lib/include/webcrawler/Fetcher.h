@@ -2,6 +2,7 @@
 #define FETCHER_H
 
 #include <memory>
+#include <string>
 
 class Url;
 

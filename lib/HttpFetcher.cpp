@@ -79,7 +79,6 @@ std::shared_ptr<FetchResult> HttpFetcher::fetchImplementation(std::shared_ptr<Ur
         // Receive the HTTP response
         http::read(stream, buffer, res);
 
-        // Write the message to standard out
         r->setResponse(boost::beast::buffers_to_string(res.body().data()));
 
         // Gracefully close the socket

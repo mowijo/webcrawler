@@ -1,4 +1,4 @@
-#include <webcrawler/HttpFetcher.h>
+#include <webcrawler/HttpsFetcher.h>
 #include <webcrawler/Url.h>
 #include <gtest/gtest.h>
 
@@ -23,14 +23,14 @@ ASSERT_FALSE(e);
 TEST(HttpFetcher, verifyFetchGeneratesProperResultCodes)
 {
     std::vector<std::tuple<std::string, FetchResult::Status, int>> cases;
-    ADD_CASE( "http://google.com/" , Success) ;
-    ADD_CASE( "http://domain.does.not.exist.comma.probably.comma.that.is.of.course/" , DidNotResolve) ;
-    ADD_CASE( "http://localhost/" , HostUnreachable) ;
+    ADD_CASE( "https://google.com/" , Success) ;
+    ADD_CASE( "https://domain.does.not.exist.comma.probably.comma.that.is.of.course/" , DidNotResolve) ;
+    ADD_CASE( "https://localhost/" , HostUnreachable) ;
 
 
     for( const auto &[input, expected, lineno]: cases)
     {
-        HttpFetcher f;
+        HttpsFetcher f;
 
         auto result = f.fetch(std::make_shared<Url>(input));
 

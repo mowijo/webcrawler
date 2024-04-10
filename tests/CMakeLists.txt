@@ -10,4 +10,5 @@ endmacro()
 create_test( tst_linkextractor )
 create_test( tst_url )
 create_test( tst_http_fetcher )
+create_test( tst_https_fetcher )
 

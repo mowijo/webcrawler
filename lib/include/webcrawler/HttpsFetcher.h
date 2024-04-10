@@ -5,7 +5,12 @@
 
 class HttpsFetcher : public Fetcher
 {
+public:
+    HttpsFetcher();
+    ~HttpsFetcher() = default;
 
+private:
+    std::shared_ptr<FetchResult> fetchImplementation(std::shared_ptr<Url> url) override;
 };
 
 #endif // HTTPS_FETCHER_H

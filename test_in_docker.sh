@@ -6,4 +6,3 @@ chmod ugo+x work
 docker run --rm  -w /work  -v `pwd`:/work webcrawler ./work
 rm work
 rm -rf tb
-
