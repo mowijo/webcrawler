@@ -14,7 +14,7 @@ public:
     {
         Success = 0,
         DidNotResolve,
-        HostUnreachable,
+        HostUnreachable,    //Can both be host AND/OR port
         HttpError,
         Timeout,
         UnknownError

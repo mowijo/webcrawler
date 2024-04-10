@@ -24,7 +24,8 @@ TEST(HttpFetcher, verifyFetchWorks)
 {
     std::vector<std::tuple<std::string, FetchResult::Status, int>> cases;
     ADD_CASE( "http://google.com/" , Success) ;
-    ADD_CASE( "http://domain.does.not.exist.probably.that.is/" , DidNotResolve) ;
+    ADD_CASE( "http://domain.does.not.exist.comma.probably.comma.that.is.of.course/" , DidNotResolve) ;
+    ADD_CASE( "http://localhost/" , HostUnreachable) ;
 
 
     for( const auto &[input, expected, lineno]: cases)

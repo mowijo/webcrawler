@@ -50,9 +50,17 @@ std::shared_ptr<FetchResult> HttpFetcher::fetchImplementation(std::shared_ptr<Ur
             return r;
         }
 
-
         // Make the connection on the IP address we get from a lookup
-        stream.connect(results);
+
+        try
+        {
+            stream.connect(results);
+        }
+        catch( boost::system::system_error se )
+        {
+            r->setStatus(FetchResult::HostUnreachable);
+            return r;
+        }
 
         // Set up an HTTP GET request message
         http::request<http::string_body> req{http::verb::get, url->path, version};
