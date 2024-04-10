@@ -40,5 +40,11 @@ TEST(HttpFetcher, verifyFetchGeneratesProperResultCodes)
 
 #undef ADD_CASE
 
+TEST(HttpsFetcher, verifyGETcontent)
+{
+    HttpsFetcher f;
+    auto result = f.fetch(std::make_shared<Url>("https://google.com/"));
+    const std::size_t found = result->response().find("<A HREF=\"https://www.google.com/\">here</A>");
+    ASSERT_TRUE (found!=std::string::npos);
+}
 
-#undef ADD_CASE
