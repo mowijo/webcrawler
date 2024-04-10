@@ -1,4 +1,9 @@
 #/bin/bash
 
 docker build . -t webcrawler
-docker run --rm  -v `pwd`:/work webcrawler cd /work ; rm -rf tb; mkdir tb; cd tb; cmake ../ ; make -j ; ctest
+echo -e "#!/bin/bash\ncd /work \n rm -rf tb \n mkdir tb \n cd tb \n cmake ../ \n make -j \n ctest \n ./application/crawl" > work
+chmod ugo+x work
+docker run --rm  -w /work  -v `pwd`:/work webcrawler ./work
+rm work
+rm -rf tb
+

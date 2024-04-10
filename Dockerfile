@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install  -y  cmake
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -10,6 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libgmock-dev\
     libgtest-dev \
     libicu-dev \
+    libssl-dev \
     python3.11-dev\
     ; \
     rm -rf /var/lib/apt/lists/*
