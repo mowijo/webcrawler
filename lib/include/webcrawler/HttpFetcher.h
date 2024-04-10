@@ -1,11 +1,16 @@
 #ifndef HTTPFETCHER_H
 #define HTTPFETCHER_H
 
-class HttpFetcher
+#include <webcrawler/Fetcher.h>
+
+class HttpFetcher : public Fetcher
 {
 public:
     HttpFetcher();
-    void fetch();
+    ~HttpFetcher() = default;
+
+private:
+    std::shared_ptr<FetchResult> fetchImplementation(std::shared_ptr<Url> url) override;
 };
 
 

@@ -6,6 +6,19 @@
 using namespace std;
 #include <iostream>
 
+
+Url::Url(const char *constData)
+{
+    *this = Url::parse(constData);
+}
+
+Url::Url(const std::string &constString)
+{
+    *this = Url::parse(constString);
+}
+
+
+
 Url Url::parse(const std::string url_s)
 {
     Url u;
@@ -85,4 +98,37 @@ bool shouldFollow(const Url &u)
 
     return true;
 
+}
+
+
+bool Url::operator==(const Url &other) const
+{
+    return (
+        (this->schema == other.schema )
+        &&
+        (this->host == other.host )
+        &&
+        (this->port == other.port )
+        &&
+        (this->path == other.path )
+    );
+}
+
+
+std::string Url::asString() const
+{
+    return schemaAsString() + "://" + host + ":" + std::to_string(port) + path;
+}
+void makeAbsoluteFromAbsoluteAndRelative(const Url &absolute, Url *relativeThatWillBeAbsolute)
+{
+    relativeThatWillBeAbsolute->port = absolute.port;
+    relativeThatWillBeAbsolute->schema = absolute.schema;
+    relativeThatWillBeAbsolute->host = absolute.host;
+    relativeThatWillBeAbsolute->path = absolute.path + "/" + relativeThatWillBeAbsolute->path;
+}
+
+
+std::ostream& operator<<(std::ostream& stream, Url const& url)
+{
+    return stream << url.asString();
 }
