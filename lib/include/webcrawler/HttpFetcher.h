@@ -5,7 +5,7 @@ class HttpFetcher
 {
 public:
     HttpFetcher();
-
+    void fetch();
 };
 
 

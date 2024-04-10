@@ -10,3 +10,6 @@ endmacro()
 
 
 create_test( tst_linkextractor )
+create_test( tst_url )
+
+
