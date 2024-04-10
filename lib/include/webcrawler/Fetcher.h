@@ -16,7 +16,6 @@ public:
         DidNotResolve,
         HostUnreachable,    //Can both be host AND/OR port
         HttpError,
-        Timeout,
         UnknownError
     };
 
