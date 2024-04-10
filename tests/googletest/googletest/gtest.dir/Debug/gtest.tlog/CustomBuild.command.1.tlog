@@ -1,0 +1,10 @@
+^C:\USERS\MORTEN\TMD_TEST\TESTS\GOOGLETEST\GOOGLETEST\CMAKELISTS.TXT
+setlocal
+C:\devtools\CMake\bin\cmake.exe -SC:/Users/Morten/tmd_test -BC:/Users/Morten/tmd_test --check-stamp-file C:/Users/Morten/tmd_test/tests/googletest/googletest/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
