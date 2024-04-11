@@ -17,6 +17,11 @@ Url::Url(const std::string &constString)
     *this = Url::parse(constString);
 }
 
+bool Url::isValid() const
+{
+    return true;
+}
+
 
 
 Url Url::parse(const std::string url_s)
@@ -43,9 +48,9 @@ Url Url::parse(const std::string url_s)
         u.schema = HTTPS;
         u.port = 443;
     }
-    else
+    else if (  boost_url.scheme() == "" )
     {
-        u.schema = OTHER;
+        u.schema = RELATIVE;
     }
 
     if( authority.has_port() )
@@ -129,7 +134,8 @@ void makeAbsoluteFromAbsoluteAndRelative(const Url &absolute, Url *relativeThatW
     relativeThatWillBeAbsolute->port = absolute.port;
     relativeThatWillBeAbsolute->schema = absolute.schema;
     relativeThatWillBeAbsolute->host = absolute.host;
-    relativeThatWillBeAbsolute->path = absolute.path + "/" + relativeThatWillBeAbsolute->path;
+    std::string newPath = absolute.path + "/" + relativeThatWillBeAbsolute->path;
+    relativeThatWillBeAbsolute->path = newPath;
 }
 
 

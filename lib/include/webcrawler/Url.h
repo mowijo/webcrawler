@@ -12,6 +12,7 @@ public:
     enum Schema
     {
         OTHER = 0,
+        RELATIVE,
         HTTP,
         HTTPS,
     };
@@ -37,6 +38,7 @@ public:
         {
         case HTTPS: return "https";
         case HTTP: return "http";
+        case RELATIVE: return "relative";
         default:
             break;
            }
