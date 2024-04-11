@@ -2,7 +2,6 @@
 
 #include <boost/url.hpp>
 
-// libboost-url1.81-dev
 using namespace std;
 #include <iostream>
 
@@ -19,10 +18,22 @@ Url::Url(const std::string &constString)
 
 bool Url::isValid() const
 {
-    return true;
+    return is_valid;
 }
 
 
+std::string Url::schemaAsString() const
+{
+    switch(schema)
+    {
+    case HTTPS: return "https";
+    case HTTP: return "http";
+    case RELATIVE: return "relative";
+    default:
+        break;
+       }
+    return "other";
+}
 
 Url Url::parse(const std::string url_s)
 {
@@ -33,6 +44,7 @@ Url Url::parse(const std::string url_s)
     u.path = "";
     u.query = "";
     u.schema = OTHER;
+    u.is_valid = false;
 
     boost::url boost_url(url_s);
     auto const authority = boost_url.authority();
@@ -65,6 +77,7 @@ Url Url::parse(const std::string url_s)
         u.path = "/";
     }
 
+    u.is_valid = true;
     return u;
 }
 

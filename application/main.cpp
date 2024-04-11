@@ -73,9 +73,7 @@ std::shared_ptr<Crawler::VisitResult> Crawler::visitBlocking(webaddress u, int c
     {
         return result;
     }
-    std::cout << "Fetches " << currentUrl->asString() << std::endl;
     auto fetchResult = fetcher->fetch(currentUrl);
-    std::cout << "Done fetching " << currentUrl->asString() << std::endl;
     if(fetchResult->status() != FetchResult::Success)
     {
         return result;

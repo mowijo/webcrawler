@@ -11,6 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libgtest-dev \
     libicu-dev \
     libssl-dev \
+    libxml2-dev \
     python3.11-dev\
     ; \
     rm -rf /var/lib/apt/lists/*

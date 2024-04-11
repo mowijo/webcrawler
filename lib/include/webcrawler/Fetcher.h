@@ -6,6 +6,10 @@
 
 class Url;
 
+
+
+/** Class FetchResult is a class holding information about a downloading of a resource on the internet.
+It contains the downloaded data, where it came from, a success status and possibly an error message*/
 class FetchResult
 {
 
@@ -42,6 +46,7 @@ private:
     } d;
 };
 
+/** Class fetcher is an abstract base class for Fetchers, that is classes that are capable of downloading resources from the internet.*/
 class Fetcher
 {
 public:

@@ -3,6 +3,11 @@
 
 #include <webcrawler/Fetcher.h>
 
+/** Implements fetching of HTTPS resources.
+
+Note, that this class has a limited set of root certificates bundled and you may end up trying to
+fetch a resource signed at toplevel using a certificate not present here.
+*/
 class HttpsFetcher : public Fetcher
 {
 public:

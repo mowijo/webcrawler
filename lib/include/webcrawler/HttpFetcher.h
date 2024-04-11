@@ -3,6 +3,7 @@
 
 #include <webcrawler/Fetcher.h>
 
+/** Implements fetching of HTTPS resources.*/
 class HttpFetcher : public Fetcher
 {
 public:
