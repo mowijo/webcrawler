@@ -45,7 +45,16 @@ TEST(HttpFetcher, verifyFetchGeneratesProperResultCodes)
 TEST(HttpFetcher, verifyGETcontent)
 {
     HttpFetcher f;
-    auto result = f.fetch(std::make_shared<Url>("http://google.com/"));
+    const auto result = f.fetch(std::make_shared<Url>("http://google.com/"));
+    const std::size_t found = result->response().find("<A HREF=\"http://www.google.com/\">here</A>");
+    ASSERT_TRUE (found!=std::string::npos);
+}
+
+
+TEST(HttpFetcher, verifyGETWithNoPathProvided)
+{
+    HttpFetcher f;
+    const auto result = f.fetch(std::make_shared<Url>("http://google.com"));
     const std::size_t found = result->response().find("<A HREF=\"http://www.google.com/\">here</A>");
     ASSERT_TRUE (found!=std::string::npos);
 }

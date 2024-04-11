@@ -1,0 +1,715 @@
+auto html = R"HTML(
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<title>C++ &amp; Qt Freelancer/Consultant</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+
+
+:root {
+--blue: #0d3d53;
+--blueText: #ffffff;
+--blueHeadline: #f06c21;
+--blueShadow: rgba(13,61,83, 0.1);
+
+--white: #ffffff;
+--whiteText: #0d3d53;
+--whiteHeadline: #0d3d53;
+
+--orange: #   ;
+--menuText: #f06c21;
+}
+
+
+
+
+@font-face {
+font-family: headlineFont;
+/* src: url(BebasNeue-Regular.ttf); */
+src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+font-family: menuFont;
+/* src: url(BebasNeue-Regular.ttf); */
+src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+H1, H2, H3, H4 {
+font-family: headlineFont;
+font-weight: normal;
+padding-top: 1rem;
+padding-bottom: 1rem;
+}
+
+H1 {
+padding-top: 2rem;
+padding-bottom: 2rem;
+font-size: 3rem;
+text-align: center;
+}
+
+
+
+#phoneNumber
+{
+    color: var(--blue);
+}
+
+#phoneNumber::before {
+content: "\260E";
+color: var(--orange);
+}
+
+#splash, #aboutMe, #testimonials
+{
+    text-align: center;
+    background: var(--blue);
+    padding-bottom: 2rem;
+    color: white;
+}
+
+#testimonials H1, #testimonials H2,
+#aboutMe H1, #aboutMe H2,
+#splash H1, #splash H2
+{
+color: var(--blueHeadline);
+}
+
+#testimonials P{
+color: var(--blue);
+}
+
+#aboutMe
+
+#whatIDo, #contactMe
+{
+    background-color: var(--white);
+    color: var(--whiteText);
+}
+
+
+{
+    background-color: var(--blue);
+}
+
+
+* {
+box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+float: left;
+width: 33.33%;
+padding: 10px;
+}
+
+.column p
+{
+max-width : 80%;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 1em;
+}
+
+.column h2
+{
+    text-align: center;
+    margin-bottom: rem;
+}
+
+.column img
+{
+    border: none;
+    height: 8rem;
+    margin: auto;
+    text-align: center;
+    display: block;
+    margin-bottom: 1rem;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+
+
+.testimonial
+{
+padding: 1.5em;
+height: 100%;
+    text-align: left;
+}
+
+.testimonial p
+{
+padding-left: 25%;
+font-style: italic;
+}
+
+
+
+.testimonial p.name
+{
+font-style: normal;
+font-weight: bold;
+padding-bottom: 0;
+margin-bottom: 0;
+}
+
+.testimonial p.company
+{
+font-style: normal;
+}
+
+
+
+section p
+{
+margin-bottom: 1em;
+}
+
+.testimonial img
+{
+    width: 20%;
+    float: left;
+}
+
+
+#contactMeForm, #aboutmeWrapper
+{
+max-width: 30rem;
+margin: auto;
+text-align: left;
+}
+
+#contactMeForm label
+{
+display: block;
+width: 100%;
+padding: 1rem 0px;
+}
+
+
+
+
+
+#contactMeForm input, #contactMeForm input, #contactMeForm textarea{
+display: block;
+width: 100%;
+padding: 12px 20px;
+background: #fff;
+color: #525865;
+border-radius: 4px;
+border: 1px solid var(--blue);
+box-shadow: inset 1px 2px 8px var(--blueShadow);
+font-family: inherit;
+font-size: 1em;
+line-height: 1.45;
+outline: none;
+padding: 0.6em 1.45em 0.7em;
+-webkit-transition: .18s ease-out;
+-moz-transition: .18s ease-out;
+-o-transition: .18s ease-out;
+transition: .18s ease-out;
+}
+
+#contactMeForm input:hover, #contactMeForm textarea:hover {
+box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+#contactMeForm input:focus, #contactMeForm textarea:focus{
+color: #4b515d;
+border: 1px solid var(--orange);
+box-shadow: inset 1px 2px 4px var(--blueShadow), 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+#contactMeForm textarea
+{
+height: 20rem;
+}
+
+
+
+/* UTILITIES */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+a {
+text-decoration: none;
+}
+
+
+
+
+
+/* NAVBAR STYLING STARTS */
+.navbar {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1rem;
+background-color: var(--blue);
+color: var(--menuText);
+font-family: menuFont
+}
+.nav-links a {
+color: var(--menuText);
+}
+/* LOGO */
+.logo {
+font-size: 1.5rem;
+font-family: headlineFont
+}
+/* NAVBAR MENU */
+.menu {
+display: flex;
+gap: 1em;
+font-size: 1.5rem;
+}
+.menu li:hover {
+background-color: var(--orange);
+border-radius: 5px;
+transition: 0.3s ease;
+}
+
+.menu li:hover a {
+color: white;
+}
+.menu li {
+padding: 5px 14px;
+list-style: none;
+
+}
+/* DROPDOWN MENU */
+.services {
+position: relative;
+}
+.dropdown {
+background-color: rgb(1, 139, 139);
+padding: 1em 0;
+position: absolute; /*WITH RESPECT TO PARENT*/
+display: none;
+border-radius: 8px;
+top: 35px;
+}
+.dropdown li + li {
+margin-top: 10px;
+}
+.dropdown li {
+padding: 0.5em 1em;
+width: 8em;
+text-align: center;
+}
+.dropdown li:hover {
+background-color: #4c9e9e;
+}
+.services:hover .dropdown {
+display: block;
+}
+
+
+
+
+
+/*RESPONSIVE NAVBAR MENU STARTS*/
+/* CHECKBOX HACK */
+input[type=checkbox]{
+display: none;
+}
+/*HAMBURGER MENU*/
+.hamburger {
+display: none;
+font-size: 24px;
+user-select: none;
+}
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 600px) {
+.menu {
+display:none;
+position: absolute;
+background-color:teal;
+right: 0;
+left: 0;
+text-align: center;
+padding: 16px 0;
+}
+.menu li:hover {
+display: inline-block;
+background-color:#4c9e9e;
+transition: 0.3s ease;
+}
+.menu li + li {
+margin-top: 12px;
+}
+input[type=checkbox]:checked ~ .menu{
+display: block;
+}
+.hamburger {
+display: block;
+}
+.dropdown {
+left: 50%;
+top: 30px;
+transform: translateX(35%);
+}
+.dropdown li:hover {
+background-color: #4c9e9e;
+}
+}
+
+
+
+
+/* Carousel */
+
+
+
+
+
+.carousel {
+margin: 0 auto;
+overflow: hidden;
+text-align: center;
+}
+
+.slides {
+width: 100%;
+max-width: 600px;
+margin: auto;
+display: flex;
+overflow-x: scroll;
+scrollbar-width: none;
+scroll-snap-type: x mandatory;
+scroll-behavior: smooth;
+}
+
+.slides::-webkit-scrollbar {
+display: none;
+}
+
+.slides-item {
+align-items: center;
+border-radius: 10px;
+display: flex;
+flex-shrink: 0;
+
+justify-content: center;
+margin: 0 1rem;
+position: relative;
+scroll-snap-align: start;
+transform: scale(1);
+transform-origin: center center;
+transition: transform .5s;
+width: 100%;
+background-color : var(--white);
+color: var(--orange);
+}
+
+.carousel__nav {
+padding: 1.25rem .5rem;
+}
+
+.slider-nav {
+align-items: center;
+background-color: var(--white);
+border-radius: 50%;
+color: #000;
+display: inline-flex;
+height: 1.5rem;
+justify-content: center;
+padding: .5rem;
+position: relative;
+text-decoration: none;
+width: 1.5rem;
+}
+
+.slider-nav:hover,
+.slider-nav:active {
+background-color: #000;
+color: #fff;
+}
+
+
+.carousel__skip-link {
+height: 1px;
+overflow: hidden;
+position: absolute;
+top: auto;
+width: 1px;
+}
+
+.carousel__skip-link:focus {
+align-items: center;
+background-color: #000;
+color: #fff;
+display: flex;
+height: 680px;
+justify-content: center;
+opacity: .8;
+text-decoration: none;
+width: 100%;
+z-index: 1;
+}
+
+
+#aboutMeExamples li
+{
+    margin-left: 30px;
+}
+
+
+
+
+
+
+/* */
+.fade-in-image {
+opacity: 0;
+padding-left: 1em;
+padding-right: 1em;
+
+height: 8em;
+animation: fadeIn =0.5s;
+-webkit-animation: fadeIn 0.5s;
+-moz-animation: fadeIn 0.5s;
+-o-animation: fadeIn 0.5s;
+-ms-animation: fadeIn 0.5s;
+animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+.column {
+width: 100%;
+    margin-bottom: 1em;
+}
+}
+
+
+</style>
+
+<script type="text/javascript">
+function updateYears()
+{
+    spans = document.getElementsByClassName("yearsOfExperience")
+    for (var span of spans) {
+            span.innerHTML = new Date().getFullYear()  - 2005;
+    }
+}
+
+async function send(e,form) {
+e.preventDefault();
+fetch(form.action,{method:'post', body: new FormData(form)})
+.then(x => x.text())
+.then(y => alert(y))
+;
+}
+
+window.onload = updateYears;
+</script>
+</head>
+<body>
+
+
+<nav class="navbar">
+    <div class="logo"><img style="height: 0.75em; padding-right: 0.5em;" src="images/tiny-me-in-circle.png" />Morten Winkler Jørgensen</div>
+    <ul class="nav-links">
+            <input type="checkbox" id="checkbox_toggle" />
+            <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+            <div class="menu">
+                    <li><a href="#whatDoIOffer">What I offer</a></li>
+                    <li><a href="#testimonialsSection">Testimonials</a></li>
+                    <li><a href="#contactMe">Contact</a></li>
+                    <li><a href="#aboutMeSection">About me</a></li>
+            </div>
+    </ul>
+</nav>
+
+<section id="splash">
+
+<h1>C++ &amp; Qt Freelancer/<wbr>Consultant</h1>
+<img style="animation-delay: 0s;" class="fade-in-image" src="images/linux-icon.svg" />
+<img style="animation-delay: 0.5s;" class="fade-in-image" src="images/windows-icon.svg"/>
+<img style="animation-delay: 1s;" class="fade-in-image" src="images/mac-icon.svg"/>
+<img style="animation-delay: 1.5s;" class="fade-in-image" src="images/android-icon.svg"/>
+<img style="animation-delay: 2s;" class="fade-in-image" src="images/ios-icon.svg"/>
+<img style="animation-delay: 2.5s;" class="fade-in-image" src="images/embedded-icon.svg"/>
+
+
+</section>
+
+
+
+<section id="whatIDo">
+<h1><a id="whatDoIOffer">What I do</a></h1>
+
+<div class="row">
+<div class="column">
+    <h2><img src="images/day-laborer.svg" />
+Development</h2>
+<p>Sometimes you simply need an extra hand. I can be that hand for as short or as long as you need it.</p>
+    <p>With <span class="yearsOfExperience" >X</span> years of experience in as vast areas as machine control, embedded, cloud, desktop, mobile and everything in between, I am good fit in almost any kind of C or C++ project.</p>
+    <p>I can work for you both onsite and remote - And I hit the ground running!</p>
+</div>
+
+<div class="column">
+    <img src="images/training.svg" />
+<h2>Training</h2>
+<p>I am good at what I do, and I love help other people getting better.</p>
+    <p>I can help your team grow their skills in C++ and Qt. I am an experienced speaker and I am good at communicating and at figuring out what a team need in order to grow.</p>
+    <p>Training can be done on site or virtually. Either method is a guarantee that your team will grow their skillset and immideately increase their productivity.</p>
+</div>
+
+<div class="column">
+    <img src="images/consulting.svg" />
+<h2>Consulting</h2>
+<p>Do you need help deciding on an architecture? Or do you need to plan the road forward in any of my areas of competences? If so, I am the person you need.</p>
+    <p>I have extensive experince in designing applications in C++ for both embedded, desktop and cloud and I can help you identify the areas that need special attention and offer you a solution that fits into your business.</p>
+    <p>In my experience, this is best done onsite, but remote consulting is also a possibility.</p>
+</div>
+</div> <!-- class="row" -->
+</section>
+
+<section id="testimonials" class="carousel" aria-label="carousel" Tabindex="0">
+<h1><a id="testimonialsSection">Testimonials</a></h1>
+<a class="carousel__skip-link" href="#skip-link">Skip the Carousel</a>
+<div class="slides">
+<div class="slides-item slide-1" id="slide-1" aria-label="slide 1 of 5" tabindex="0">
+
+            <div class="testimonial" >
+
+        <img src="testimonial-photos/andres.png" />
+        <p class="name">Andres Galavis, Director of Software Developemnt</p>
+        <p class="company">Elsteel Ltd.</p>
+
+    <p class="first">During the transition from Visual Basic to C++ and Qt, the process went off track. Progress halted and development came to a stop. Morten came in and redesigned the entire architecture, introduced good programmming practices and helped finding good programmers for the new language.</p>
+                    <p>Ever since I have regularily made use of Morten's competences and we frequently discuss how we can continue to improve the application and our processes.</p>
+            </div>
+
+    </div>
+
+    <div class="slides-item slide-2" id="slide-2" aria-label="slide 2 of 5" tabindex="0">
+            <div class="testimonial" >
+                    <img src="testimonial-photos/ebbe.png" />
+                    <p class="name">Ebbe Finding, CTO</p>
+                    <p class="company">QLife A/S</p>
+                    <p class="first">Morten is a very competent software developer and an easy going person. He has helped us shaping our cloud-to-instrument communication and assisted us in keeping focus on how we manage data flow between instrumments and the cloud.</p>
+                    <p>Morten also has been developing desktop software for managing a fleet of instruments with discovery, network configuration and running multiple assays all while conforming to the strictest medico regulations.</p>
+                    <p>I can recommend Morten to everybody who has need for a more than competent developer to speed up their development.</p>
+            </div>
+    </div>
+
+    <div class="slides-item slide-3" id="slide-3" aria-label="slide 3 of 5" tabindex="0">
+            <div class="testimonial" >
+        <img src="testimonial-photos/rasmus.png" />
+                    <p class="name">Rasmus Julius</p>
+                    <p class="company">Hoffmann-La Roche</p>
+                    <p class="first">The first time I met Morten, he implemented HMAC based communication between a point of care instrument and an Azure backend on the first day.</p>
+                    <p>He definitely hits the ground running.</p>
+            </div>
+
+    </div>
+
+    <div class="slides-item slide-4" id="slide-4" aria-label="slide 4 of 5" tabindex="0">
+            <div class="testimonial" >
+                    <img src="testimonial-photos/finn.png" />
+                    <p class="name">Finn Kähler, Manager of Software Development</p>
+                    <p class="company">OJ Electronics</p>
+                    <p class="first">Morten came in at a critical time of our development. We had an inexperienced team and an early prototype and we needed progress.</p>
+                    <p>Morten communicated with chip vendors and validated the nessecary capabilities of our chips, and he designed the embedded architecture for all cloud communication.</p>
+                    <p>Morten has an incredible attention to details without ever losing sight of the overall goal. Add to that that he is pragmatic and a real nice guy - I can recommend Morten highly.</p>
+            </div>
+    </div>
+
+</div>
+<div class="carousel__nav">
+<a class="slider-nav" href="#slide-1" aria-label="Go to slide 1">1</a>
+<a class="slider-nav" href="#slide-2" aria-label="Go to slide 2">2</a>
+<a class="slider-nav" href="#slide-3" aria-label="Go to slide 3">3</a>
+<a class="slider-nav" href="#slide-4" aria-label="Go to slide 4">4</a>
+</div>
+<div class="carousel__skip-message" id="skip-link" tabindex="0"></div>
+</section>
+
+
+
+<section id="contactMe" itemtype="https://schema.org/LocalBusiness">
+    <h1><a id="contactMe">Contact Me</a></h1>
+    <form id="contactMeForm"  action="mail/" onsubmit="send(event,this)">
+            <p>Fill out the for below and I will get back to you as soon as I get your message...<p>
+    <p>...or simply call me on <span class="telephoneNumber" itemprop="telephone"><a id="phoneNumber" href="tel:+4542738310">+45 42 73 83 10</a></p>
+    </span>
+<p>
+
+            <input placeholder="Your name..." type="text" id="contactFormName" name="name" /><br />
+            <input placeholder="Your email address..." id="contactFormEmailAddress"
+type="text" name="email" /><br />
+            <textarea id="contactFormMessage" placeholder="Your message..." name="message" /></textarea ><br />
+            <input type="submit" value="Send message..." />
+    </form>
+</section>
+
+<section id="aboutMe">
+<div id="aboutmeWrapper">
+    <h1><a id="aboutMeSection">About Me</a></h1>
+    <p>I am a grizzled software developer with <span class="yearsOfExperience" >X</span> years of experience from a wide range of sectors. I have for example:</p>
+    <ul id="aboutMeExamples">
+            <li>Automated potato sorting with C++ and 3 tons of stainless steel.</li>
+            <li>Lived in Germany working for Nokia on a "secret projecct"</li>
+            <li>Programmed humanoid robots</li>
+            <li>Made a wide range of frontend and backend applications for all the major platforms, desktop as well as mobile</li>
+            <li>Squeezed the last clock cycle out of embedded projects</li>
+            <li>Managed a team on-site in Sri Lanka for a Year</li>
+            <li>Programmed self reconfiguratle robots in Japan.</li>
+            <li>Worked onsite in New York for a augmented reality startup</li>
+    </ul>
+    <p>&nbsp;</p>
+    <p>These days I live with my family in Denmark</p>
+    <p>During my  work, C++ has been the predominating language and I have gained an extensive experience in how to solve real world problems using C++.</p>
+    <p>In most of my non-embedded work, Qt has run as a common thread, and I have been using Qt for the last <span class="yearsOfExperience" >X</span> years starting with Qt version 3.</p>
+    <p>You may consider me old, but I consider experience the new black!</p>
+    </div>
+</section>
+
+</body>
+</html>
+
+)HTML";

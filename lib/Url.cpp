@@ -55,6 +55,11 @@ Url Url::parse(const std::string url_s)
 
     u.path = boost_url.path();
 
+    if( u.path == "")
+    {
+        u.path = "/";
+    }
+
     return u;
 }
 
